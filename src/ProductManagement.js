@@ -53,20 +53,12 @@ const ProductManagement = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
- 
-    if (!file) {
-        window.alert('No image was added!');
-        return;
-    }
- 
     const reader = new FileReader();
     reader.onload = (e) => {
       setImageUrl(e.target.result); // Update state with image URL
-      window.alert('Image uploaded successfully!');
     };
-    
     reader.readAsDataURL(file);
- };
+  };
    
 
   //design
