@@ -53,12 +53,20 @@ const ProductManagement = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+ 
+    if (!file) {
+        window.alert('No image was added!');
+        return;
+    }
+ 
     const reader = new FileReader();
     reader.onload = (e) => {
       setImageUrl(e.target.result); // Update state with image URL
+      window.alert('Image uploaded successfully!');
     };
+    
     reader.readAsDataURL(file);
-  };
+ };
    
 
   //design
@@ -540,13 +548,8 @@ return (
                   <td>{product.category}</td>
                   <td>
                    
-                    
-                    <button onClick={() => handleEditStocks(product.id)} className="btn btn-info me-2">
-                      Update Stocks
-                    </button>
-                    <button onClick={() => deleteProduct(product.id)} className="btn btn-danger">
-                      Delete
-                    </button>
+                    <button onClick={() => handleEditStocks(product.id)} className="btn btn-info me-2">Update Stocks</button>
+                    <button onClick={() => deleteProduct(product.id)} className="btn btn-danger">Delete</button>
                   </td>
                 </tr>
               ))}
